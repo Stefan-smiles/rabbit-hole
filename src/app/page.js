@@ -1,11 +1,12 @@
+import Call from "@/components/call";
 import { key } from "@/utils/db";
-import Error from "next/error";
+
 export default async function Home() {
-  let data = await fetch(
-    `https://api.themoviedb.org/3/movie/popular/include_adult=false/api_key=${key}`
+  const responseMovies = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b&page=1`
   );
-  console.log(data);
-  let movies = await data.json();
+  const movies = await responseMovies.json();
+  console.log(movies);
   {
     movies.map((movie) => {
       return (
