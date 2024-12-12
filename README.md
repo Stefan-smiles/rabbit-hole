@@ -1,3 +1,7 @@
+clerk-changes
+
+So far we have completed the making of a figma, with a wireframe, SQL schema and our user stories. 
+=======
 -Captains Log 20241210
 
 So far we have begun the making of a figma, with a wireframe, SQL schema and our user stories. WbSCcaag
@@ -11,3 +15,4 @@ having to be deleted so having to set up another repo on a second account. WbSCc
 
 
 -Captains Log 20241212
+main
