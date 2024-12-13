@@ -7,6 +7,8 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import Link from "next/link";
+import Footer from "@/components/Footer";
+
 
 export const metadata = {
   title: "Rabbit hole",
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
             <UserButton />
           </SignedIn>
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
