@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import { db } from "@/utils/db";
 export default async function ProfileForm() {
   const { userId } = await auth();
   console.log(userId);
