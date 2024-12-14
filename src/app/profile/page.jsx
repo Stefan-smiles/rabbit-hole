@@ -18,7 +18,7 @@ export default async function ProfilePage() {
       <h2>welcome to the profile page</h2>
       {currentUserObj && (
         <div>
-          {currentUserObj.firstname
+          {currentUserObj.firstName
             ? `welcometo Rabbit Hole ${currentUserObj.firstname}`
             : `welcome to Rabbit Hole`}
         </div>
