@@ -1,34 +1,24 @@
-import * as Form from '@radix-ui/react-form';
-import React from 'react';
+import { db } from "@/utils/db";
+import { auth } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
-export default function ReviewForm() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log('Form Data:', data);
-  };
-
-return(
-    <Form.Root>
-    <Form.Field name="media-title">
-        <Form.Label>media-title</Form.Label>
-        <Form.Message>please enter a media-title</Form.Message>
-        <Form.ValidityState />
-    </Form.Field>
-
-    <Form.Field name="review">
-        <Form.Label />
-        <Form.Control />
-        <Form.Message />
-        <Form.ValidityState />
-    </Form.Field>
-
-    <Form.Message />
-    <Form.ValidityState />
-
-    <Form.Submit />
-</Form.Root>
-);
-
-);}
+export default async function ReviewForm({ typeid }) {
+  const { userId } = await auth();
+  async function handleSubmit(formData) {
+    "use server";
+    const review = formData.get("review");
+    db.query(
+      `INSERT INTO review (title,content,clerk_id, typeid)VALUES ($1,$2,$3,$4)`,
+      [title, content, userId, typeid]
+    );
+    revalidatePath("/film");
+  }
+  return (
+    <form action={handleSubmit}>
+      <input name="title" placeholder="enter the film title" type="text" />
+      <input type="hidden" name="type" value={typeid} />
+      <textarea name="content" placeholder="enter your review" />
+      <button>Submit review</button>
+    </form>
+  );
+}
