@@ -1,13 +1,3 @@
-
-export default function ReviewForm() {
-return(
-    //input for media title
-    //input for reveiw
-    //
-    
-)
-}
-=======
 import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
