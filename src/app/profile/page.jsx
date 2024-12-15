@@ -8,10 +8,10 @@ export default async function ProfilePage() {
   console.log(userId);
   console.log(user);
   console.log(currentUserObj);
-  const responseProfile = await db.query(
+  const responseUsers = await db.query(
     `SELECT * FROM users WHERE clerk_id = '${userId}'`
   );
-  const profile = responseProfile.rows;
+  const users = responseUsers.rows;
 
   return (
     <div>
@@ -24,8 +24,8 @@ export default async function ProfilePage() {
         </div>
       )}
       {/* </div> */}
-      <h2>Username:{profile[0].username}</h2>
-      <p>Bio:{profile[0].bio}</p>
+      <h2>Username:{users[0].username}</h2>
+      <p>Bio:{users[0].bio}</p>
     </div>
   );
 }
