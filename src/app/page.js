@@ -28,8 +28,8 @@ export default async function Home() {
               <div className="p-4">
                 <h2 className="text-lg font-bold truncate">{movie.title}</h2>
                 <p className="text-sm text-gray-300 mt-2">
-                  {movie.overview.length > 100
-                    ? `${movie.overview.slice(0, 100)}...`
+                  {movie.overview.length > 150
+                    ? `${movie.overview.slice(0, 150)}...`
                     : movie.overview}
                 </p>
               </div>
