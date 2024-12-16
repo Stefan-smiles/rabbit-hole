@@ -19,3 +19,22 @@ Todays accomplishments have been few but they are monumental to the project. The
 - Fixing the api call so as not to crash computers repeatedly
 - ensuring and updating the clerk Auth and the middle ware to go with it
 - passionately discussing the wireframe and the figma and where to go fromm that.
+
+-Captains Log 20241216
+
+Todays accomplishments are
+-Profile page implementation
+-Profile page madifications and form submission
+-Search bar construction and research
+-like buttons started and ready to be impolemented
+-Avoided dangerous traffic Colisions, barely
+-profile page tailwind css started and completed
+-database URL fixed (transaction pooler instead of connection URL)
+-database altered to accomodate new likes table
+
+goals for tomorrow include
+
+- endpoint fix for the API
+- finish up the MVP to make a fully working product
+- add all relevent user info to page.
+- create seeded data for reviews
