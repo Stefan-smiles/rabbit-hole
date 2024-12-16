@@ -1,8 +1,11 @@
-"use client"
-import { useParams } from 'next/navigation'
+import { MovieSearch } from "@/components/MovieSearch";
 
-export default function SingleFilmPage() {
-    const params = useParams();
-    console.log("This is my params log:",params)
-  return (<h2>This im my single film Page</h2>);
+export default function Film() {
+  return (
+    <div>
+      <h2>welcome to the film page</h2>
+
+      <MovieSearch />
+    </div>
+  );
 }

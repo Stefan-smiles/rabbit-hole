@@ -1,7 +1,8 @@
-export default function Film() {
-  return (
-    <>
-      <h2>welcome to the film page</h2>
-    </>
-  );
+"use client";
+import { useParams } from "next/navigation";
+
+export default function SingleFilmPage() {
+  const params = useParams();
+  console.log("This is my params log:", params);
+  return <h2>This im my single film Page</h2>;
 }
