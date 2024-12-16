@@ -1,31 +1,31 @@
-import ReviewForm from "@/components/ReviewForm";
 import UserForm from "@/components/UserForm";
-import { db } from "@/utils/db";
-import { SignedOut, SignedIn } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 export default async function ProfileForm() {
   const { userId } = await auth();
-  console.log("this is my user id:", userId);
+  const user = await currentUser();
+  console.log("This is my current user:", user);
+console.log("This is my userId:",userId)
+  if (!userId) {
+    return (
+      <div>
+        <p>Please sign in to access this page.</p>
+        <Link href="/sign-in">Sign In</Link>
+      </div>
+    );
+  }else{
+    return (<>
+          <h1>Welcome {user.firstName}</h1>
+          <p>To leave reviews on films and Tv shows, fill in the form below:</p>
+          <UserForm />
+      </>)
+  }
 
-  //Check if user is user has username in database
-  const responseUser = await db.query(
-    `SELECT * FROM users WHERE clerk_id = '${userId}'`
-  );
-  const numUsers = responseUser.rowCount;
-  console.log(responseUser.rowCount);
+ 
 
-  return (
-    <>
-      /*<div>
-        <h1>Posts</h1>
-        <SignedIn>{numUsers === 1 ? <ReviewForm /> : <UserForm />}</SignedIn>
 
-        <SignedOut>
-          <Link href="/sign-in">Please sign in to make a post</Link>
-        </SignedOut>
-      </div>*/
-    </>
-  );
+
+  
 }

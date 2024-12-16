@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 export default async function ReviewForm({ typeid }) {
   const { userId } = await auth();
   async function handleSubmit(formData) {
-    "use server";
+    
     const review = formData.get("review");
     db.query(
       `INSERT INTO review (title,content,clerk_id, typeid)VALUES ($1,$2,$3,$4)`,
