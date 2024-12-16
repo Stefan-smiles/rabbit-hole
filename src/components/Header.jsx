@@ -11,7 +11,7 @@ export default function Header() {
           Home
         </Link>
         <Link
-          href="/tv&film"
+          href="/film"
           className="hover:text-gray-300 transition-colors duration-300 font-semibold"
         >
           TV & Film
