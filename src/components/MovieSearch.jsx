@@ -3,7 +3,7 @@ import { useState } from "react";
 import Film from "./Film";
 import Image from "next/image";
 
-<Film />;
+
 
 export default async function MovieSearch() {
   // State to manage the search term input by the user
