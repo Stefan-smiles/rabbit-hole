@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-import Film from "./film";
+import Film from "./Film";
 import Image from "next/image";
 
 <Film />;
 
-export default function MovieSearch() {
+export default async function MovieSearch() {
   // State to manage the search term input by the user
   const [searchTerm, setSearchTerm] = useState("");
   // State to manage the movie details retrieved from the API
   const [movieDetails, setMovieDetails] = useState(null);
 
   const handleSearch = async () => {
-    setMovieDetail(null);
+    setMovieDetails(null);
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?query=${searchTerm}api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b&page`
