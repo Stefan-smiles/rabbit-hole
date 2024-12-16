@@ -1,22 +1,23 @@
 import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
-import { Form } from "@radix-ui/react-form";
 import { revalidatePath } from "next/cache";
 
 export default async function UserForm() {
   const { userId } = await auth();
 
   async function handleSubmit(formData) {
+  
     "use server";
     const username = formData.get("username");
     const bio = formData.get("bio");
-
-    db.query(
+    console.log(formData)
+    const response = await db.query(
       `INSERT INTO users (username, bio, clerk_id) VALUES ($1, $2, $3)`,
       [username, bio, userId]
     );
+    console.log("This is my response:", response)
 
-    revalidatePath("/profile");
+    revalidatePath(`/profile`);
   }
 
   return (
@@ -24,7 +25,7 @@ export default async function UserForm() {
       <div className="bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6 text-center">Profile Form</h1>
 
-        {/* Custom Form */}
+        {/* Form */}
         <form action={handleSubmit} className="space-y-6">
           <div>
             <label
@@ -64,7 +65,7 @@ export default async function UserForm() {
           </button>
         </form>
 
-        {/* Radix Form */}
+        {/* Radix Form 
         <div className="mt-8 border-t border-gray-700 pt-6">
           <h2 className="text-lg font-semibold mb-4 text-center">
             Alternative Form
@@ -121,7 +122,7 @@ export default async function UserForm() {
               </button>
             </Form.Submit>
           </Form.Root>
-        </div>
+        </div> */}
       </div>
     </main>
   );
