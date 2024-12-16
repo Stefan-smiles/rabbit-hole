@@ -43,3 +43,14 @@ CREATE TABLE review(
     dislikes INT,
     clerk_id TEXT
   );
+
+  /*altered likes TABLE*/
+  
+
+  CREATE TABLE likes (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    review_id INT NULL REFERENCES review(id),
+    vote SMALLINT CHECK (vote IN (-1, 1)),
+    vote_type VARCHAR(255) CHECK (vote_type IN ('review', 'comment')),
+    UNIQUE(user_id, post_id, vote_type)
