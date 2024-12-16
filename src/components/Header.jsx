@@ -11,10 +11,10 @@ export default function Header() {
           Home
         </Link>
         <Link
-          href="/film"
+          href="/films"
           className="hover:text-gray-300 transition-colors duration-300 font-semibold"
         >
-          TV & Film
+          Films
         </Link>
         <Link
           href="/profile"
