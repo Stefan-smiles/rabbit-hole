@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import React from "react";
+import Image from "next/image";
 
 export default function MovieSearch() {
   const [formInputs, setForminputs] = useState({});
@@ -13,30 +15,10 @@ export default function MovieSearch() {
     event.preventDefault();
     let movies = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39bquery=${forminputs.searchTerm}&page-1&include_adult=false`
-=======
-import Film from "./Film";
-import Image from "next/image";
-
-
-
-export default async function MovieSearch() {
-  // State to manage the search term input by the user
-  const [searchTerm, setSearchTerm] = useState("");
-  // State to manage the movie details retrieved from the API
-  const [movieDetails, setMovieDetails] = useState(null);
-
-  const handleSearch = async () => {
-    setMovieDetails(null);
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${searchTerm}api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b&page`
-      );
-      console.log(response);
-
       const data = await response.json();
 
       console.log(data);
-      setMovieDetails = data;
+      setMovieDetails(data);
     } finally {
     }
     const handleChange = (e) => {
@@ -46,13 +28,15 @@ export default async function MovieSearch() {
       <div>
         <h2>Rabbit-hole </h2>
         <div>
-          <input
-            type="text"
-            placeholder="enter movie title"
-            value={searchTerm}
-            oninput={handleChange}
-          />
-          <button onclick={handleSearch}>Search</button>
+          <form>
+            <input
+              type="text"
+              placeholder="enter movie title"
+              value={searchTerm}
+              oninput={handleChange}
+            />
+            <button onclick={handleSearch}>Search</button>
+          </form>
         </div>
 
         {movieDetails && (
