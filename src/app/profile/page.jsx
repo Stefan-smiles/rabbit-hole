@@ -2,11 +2,12 @@ import { db } from "@/utils/db";
 import UserForm from "@/components/UserForm";
 import { currentUser, auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function ProfileForm() {
   const { userId } = await auth();
   const user = await currentUser();
-
+console.log("This is my user log:", user)
   if (!userId) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-8">
@@ -37,6 +38,14 @@ export default async function ProfileForm() {
         <h1 className="text-3xl font-bold text-blue-400 mb-4">
           Welcome, {user.firstName}!
         </h1>
+        <Image
+        src={user.imageUrl}
+        height={100}
+        width={100}
+        alt="Picture of User"
+        />
+        <p>Username: {user.username}</p>
+        <p>Email: {user.emailAddresses[0].emailAddress}</p>
 
         {bio ? (
           // If bio exists
