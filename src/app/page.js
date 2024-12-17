@@ -11,14 +11,11 @@ export default async function Home() {
       <h1 className="text-4xl font-extrabold mb-8 text-center tracking-wider">
         🎬 Popular Movies
       </h1>
-      <Link href={`/films/{movie.id}`}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {movies.results.map((movie) => (
 
-            <div
-              key={movie.id}
-              className="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300"
-            >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {movies.results.map((movie) => (
+          <Link href="/films" key={movie.id}>
+            <div className="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
@@ -35,10 +32,9 @@ export default async function Home() {
                 </p>
               </div>
             </div>
-
-          ))}
-        </div>
-      </Link>
+          </Link>
+        ))}
+      </div>
     </main>
   );
 }
