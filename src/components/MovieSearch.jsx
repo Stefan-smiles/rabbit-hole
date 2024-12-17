@@ -3,20 +3,18 @@ import { useState } from "react";
 import React from "react";
 import Image from "next/image";
 
-export default async function MovieSearch() {
-  // State to manage the search term input by the user
+export default function MovieSearch() {
+  const [formInputs, setForminputs] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  // State to manage the movie details retrieved from the API
-  const [movieDetails, setMovieDetails] = useState(null);
-
-  const handleSearch = async () => {
-    setMovieDetails(null);
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${searchTerm}api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b&page`
-      );
-      console.log(response);
-
+  const handleInput = (event) => {
+    let { name, value } = event.target;
+    setForminputs({ ...formInputs, [name]: value });
+    setSearchTerm(event.target.value);
+  };
+  const search = async (event) => {
+    event.preventDefault();
+    let movies = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39bquery=${forminputs.searchTerm}&page-1&include_adult=false`
       const data = await response.json();
 
       console.log(data);
@@ -60,5 +58,19 @@ export default async function MovieSearch() {
         )}
       </div>
     );
+    movies = await movies.json();
+    setSearchResults(movies.results);
   };
+  return (
+    <form onSubmit={search}>
+      <input
+        className="search"
+        name="searchTerm"
+        value={searchTerm}
+        onChange={handleInput}
+        type="text"
+      />
+      <button className="btn-search">search</button>
+    </form>
+  );
 }

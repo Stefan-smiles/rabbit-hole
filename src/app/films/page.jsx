@@ -1,4 +1,7 @@
 import MovieSearch from "@/components/MovieSearch";
+import MovieSearch from "@/components/MovieSearch";
+import  MovieSearch  from "@/components/MovieSearch";
+
 
 export default function Films() {
   return (
