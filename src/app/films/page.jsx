@@ -1,9 +1,11 @@
 import  MovieSearch  from "@/components/MovieSearch";
 
-export default function Films() {
+export default async function Films() {
+
   return (<>
-      <h2>welcome to the film page</h2>
+      <h2>Films</h2>
       <MovieSearch />
+
   </>
     
   );
