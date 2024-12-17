@@ -6,7 +6,6 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
-import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
