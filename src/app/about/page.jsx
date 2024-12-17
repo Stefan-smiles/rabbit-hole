@@ -5,7 +5,7 @@ export default function AboutPage() {
     <main className="bg-gray-900 min-h-screen text-white p-8">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-400">
-          Welcome to the About Page
+          Learn More About The Creators
         </h2>
 
         {/* Stefan Cooke */}
@@ -63,7 +63,7 @@ export default function AboutPage() {
               className="rounded-full shadow-lg"
             />
           </div>
-          <h3 className="text-2xl font-semibold text-blue-300 mb-2">Adam</h3>
+          <h3 className="text-2xl font-semibold text-blue-300 mb-2">Adam Pink</h3>
           <p className="text-gray-300 leading-relaxed italic">
             No details provided... yet.
           </p>
