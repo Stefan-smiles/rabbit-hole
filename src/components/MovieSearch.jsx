@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useState } from "rea
 import React from "react";
 import Image from "next/image";
 
@@ -19,15 +20,35 @@ export default function MovieSearch() {
 
       console.log(data);
       setMovieDetails(data);
-    } finally {
-    }
-    const handleChange = (e) => {
-      setSearchTerm(e.target.value);
-    };
-    return (
+
+  };
+
+  return (
+    <div>
+      <h2>Movie Search</h2>
       <div>
-        <h2>Rabbit-hole </h2>
+        <input
+          type="text"
+          placeholder="Enter movie title"
+          value={searchTerm}
+          onChange={handleChange} // Update input state
+        />
+        <button onClick={handleSearch} 
+      {movieDetails && (
         <div>
+
+          <Image
+            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            alt={movieDetails.title}
+            width={200}
+            height={300}
+          />
+          <h3>{movieDetails.title}</h3>
+          <p>{movieDetails.overview}</p>
+        </div>
+      )}
+    </div>
+
           <form>
             <input
               type="text"
@@ -61,16 +82,4 @@ export default function MovieSearch() {
     movies = await movies.json();
     setSearchResults(movies.results);
   };
-  return (
-    <form onSubmit={search}>
-      <input
-        className="search"
-        name="searchTerm"
-        value={searchTerm}
-        onChange={handleInput}
-        type="text"
-      />
-      <button className="btn-search">search</button>
-    </form>
-  );
-}
+  
