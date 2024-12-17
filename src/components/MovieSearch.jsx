@@ -1,9 +1,7 @@
 "use client";
 import { useState } from "react";
-import Film from "./Film";
+import React from "react";
 import Image from "next/image";
-
-
 
 export default async function MovieSearch() {
   // State to manage the search term input by the user
@@ -22,7 +20,7 @@ export default async function MovieSearch() {
       const data = await response.json();
 
       console.log(data);
-      setMovieDetails = data;
+      setMovieDetails(data);
     } finally {
     }
     const handleChange = (e) => {
@@ -32,13 +30,15 @@ export default async function MovieSearch() {
       <div>
         <h2>Rabbit-hole </h2>
         <div>
-          <input
-            type="text"
-            placeholder="enter movie title"
-            value={searchTerm}
-            oninput={handleChange}
-          />
-          <button onclick={handleSearch}>Search</button>
+          <form>
+            <input
+              type="text"
+              placeholder="enter movie title"
+              value={searchTerm}
+              oninput={handleChange}
+            />
+            <button onclick={handleSearch}>Search</button>
+          </form>
         </div>
 
         {movieDetails && (
