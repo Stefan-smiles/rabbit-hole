@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 
 export default async function ReviewForm({ typeid, movieid }) {
   const { userId } = await auth();
+
   async function handleSubmit(formData) {
     "use server";
     const review = formData.get("review");
@@ -13,13 +14,57 @@ export default async function ReviewForm({ typeid, movieid }) {
     );
     revalidatePath("/film");
   }
+
   return (
-    <form action={handleSubmit}>
-      <input name="title" placeholder="enter the film title" type="text" />
+    <form
+      action={handleSubmit}
+      className="bg-gray-900 p-8 rounded-lg shadow-lg max-w-lg mx-auto"
+    >
+      <h2 className="text-2xl font-bold text-blue-400 mb-6 text-center">
+        Submit Your Review
+      </h2>
+
+      <div className="mb-4">
+        <label
+          htmlFor="title"
+          className="block text-gray-300 text-sm font-medium mb-2"
+        >
+          Film Title
+        </label>
+        <input
+          id="title"
+          name="title"
+          placeholder="Enter the film title"
+          type="text"
+          className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
       <input type="hidden" name="type" value={typeid} />
       <input type="hidden" name="movie_id" value={movieid} />
-      <textarea name="content" placeholder="enter your review" />
-      <button>Submit review</button>
+
+      <div className="mb-4">
+        <label
+          htmlFor="content"
+          className="block text-gray-300 text-sm font-medium mb-2"
+        >
+          Review
+        </label>
+        <textarea
+          id="content"
+          name="content"
+          placeholder="Enter your review"
+          rows="5"
+          className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition duration-300"
+      >
+        Submit Review
+      </button>
     </form>
   );
 }
