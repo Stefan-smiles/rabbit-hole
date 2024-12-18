@@ -2,11 +2,11 @@
 import MovieSearch from "@/components/MovieSearch";
 import ReviewForm from "@/components/ReviewForm";
 
-export default function Films() {
+export default function Films({ movieid }) {
   return (
     <div>
       <MovieSearch />
-      <ReviewForm movieid={movie_id} />
+      <ReviewForm movie_id={movieid} />
     </div>
   );
 }
