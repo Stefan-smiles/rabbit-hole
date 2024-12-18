@@ -14,7 +14,7 @@ export default async function Home() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {movies.results.map((movie) => (
-          <Link href="/films" key={movie.id}>
+          <Link href={`/films/${movie.id}`} key={movie.id}>
             <div className="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
