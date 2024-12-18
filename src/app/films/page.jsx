@@ -1,12 +1,10 @@
 "use client";
 import MovieSearch from "@/components/MovieSearch";
-import ReviewForm from "@/components/ReviewForm";
 
-export default function Films({ movieid }) {
+export default function Films() {
   return (
     <div>
       <MovieSearch />
-      <ReviewForm movie_id={movieid} />
     </div>
   );
 }

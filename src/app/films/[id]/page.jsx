@@ -1,3 +1,4 @@
+import ReviewForm from "@/components/ReviewForm";
 import Image from "next/image";
 
 export default async function MovieDetails({ params }) {
@@ -20,10 +21,13 @@ export default async function MovieDetails({ params }) {
           width={500}
           height={750}
         />
-        
+
         <div className="mt-4 max-w-2xl text-center">
           <p className="text-lg text-gray-300">{movie.overview}</p>
-          <p className="mt-2 text-sm text-gray-400">Release Date: {movie.release_date}</p>
+          <p className="mt-2 text-sm text-gray-400">
+            Release Date: {movie.release_date}
+          </p>
+          <ReviewForm movieid={id} />
         </div>
       </div>
     </main>

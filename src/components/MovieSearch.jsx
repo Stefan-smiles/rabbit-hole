@@ -3,7 +3,7 @@
 import { useState } from "react";
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 export default function MovieSearch() {
   const [formInputs, setForminputs] = useState({});
   const [searchResults, setSearchResults] = useState([]);
@@ -57,26 +57,25 @@ export default function MovieSearch() {
         {/* Search Results */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {searchResults.map((movie) => (
-            <div
-              key={movie.id}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300"
-            >
-              <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={450}
-                className="w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-bold mb-2 text-blue-300">
-                  {movie.title}
-                </h3>
-                <p className="text-gray-400 text-sm line-clamp-3">
-                  {movie.overview || "No overview available."}
-                </p>
+            <Link href={`/films/${movie.id}`} key={movie.id}>
+              <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={450}
+                  className="w-full object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-bold mb-2 text-blue-300">
+                    {movie.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm line-clamp-3">
+                    {movie.overview || "No overview available."}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

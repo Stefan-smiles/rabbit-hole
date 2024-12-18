@@ -2,9 +2,10 @@ import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-export default async function ReviewForm({ typeid }) {
+export default async function ReviewForm({ typeid, movieid }) {
   const { userId } = await auth();
   async function handleSubmit(formData) {
+    "use server";
     const review = formData.get("review");
     db.query(
       `INSERT INTO review (title,content,clerk_id, typeid, movie_id)VALUES ($1,$2,$3,$4,$5)`,
