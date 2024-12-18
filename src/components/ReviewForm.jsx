@@ -18,10 +18,16 @@ export default async function ReviewForm({ typeid, movieid }) {
     }
 
     try {
-      console.log("Submitting review:", { title, content, userId, typeid, movieid });
+      console.log("Submitting review:", {
+        title,
+        content,
+        userId,
+        typeid,
+        movieid,
+      });
 
       await db.query(
-        `INSERT INTO review (title, content, clerk_id, typeid, movie_id) VALUES ($1, $2, $3, $4, $5)`,
+        `INSERT INTO review (title, content, clerk_id, types_id, movie_id) VALUES ($1, $2, $3, $4, $5)`,
         [title, content, userId, typeid, movieid]
       );
 
@@ -41,7 +47,10 @@ export default async function ReviewForm({ typeid, movieid }) {
       </h2>
 
       <div className="mb-4">
-        <label htmlFor="title" className="block text-gray-300 text-sm font-medium mb-2">
+        <label
+          htmlFor="title"
+          className="block text-gray-300 text-sm font-medium mb-2"
+        >
           Film Title
         </label>
         <input
@@ -57,7 +66,10 @@ export default async function ReviewForm({ typeid, movieid }) {
       <input type="hidden" name="movie_id" value={movieid} />
 
       <div className="mb-4">
-        <label htmlFor="content" className="block text-gray-300 text-sm font-medium mb-2">
+        <label
+          htmlFor="content"
+          className="block text-gray-300 text-sm font-medium mb-2"
+        >
           Review
         </label>
         <textarea
