@@ -3,7 +3,7 @@ import UserForm from "@/components/UserForm";
 import { currentUser, auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Image from "next/image";
-import { EditBio } from "@/components/EditBio";
+//import { EditBio } from "@/components/EditBio";
 
 export default async function ProfileForm() {
   const { userId } = await auth();
@@ -56,7 +56,7 @@ console.log("This is my user log:", user)
             <p className="text-gray-300 mb-4">Your Bio:</p>
             <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
               <p className="text-white">{bio}</p>
-              <EditBio/>
+              {/*<EditBio/>*/}
             </div>
           </div>
         ) : (
