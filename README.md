@@ -31,10 +31,17 @@ Todays accomplishments are
 -profile page tailwind css started and completed
 -database URL fixed (transaction pooler instead of connection URL)
 -database altered to accomodate new likes table
-
 goals for tomorrow include
-
 - endpoint fix for the API
 - finish up the MVP to make a fully working product
 - add all relevent user info to page.
 - create seeded data for reviews
+
+Captains Log 20241217
+
+Todays acheivements include
+-fixes and completion of the search bar
+-css for the search page/films page
+-began the Edit button for the bio page
+-profile page polished
+-tailwind css applied to multiple page.
