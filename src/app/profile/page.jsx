@@ -33,6 +33,8 @@ console.log("This is my user log:", user)
   const bio = currentUserData?.bio;
 
   return (
+
+    
     <main className="bg-gray-900 text-white min-h-screen p-8">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold text-blue-400 mb-4">
