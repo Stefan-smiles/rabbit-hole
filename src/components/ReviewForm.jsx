@@ -2,7 +2,7 @@ import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-export default async function ReviewForm({ typeid, movieid }) {
+export default async function ReviewForm({ typeid }) {
   const { userId } = await auth();
   async function handleSubmit(formData) {
     const review = formData.get("review");
