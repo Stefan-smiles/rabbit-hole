@@ -2,7 +2,7 @@ import ReviewForm from "@/components/ReviewForm";
 import Image from "next/image";
 
 export default async function MovieDetails({ params }) {
-  const { id } = params; // Dynamic route params
+  const { id } = await params; // Dynamic route params
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b`
   );
