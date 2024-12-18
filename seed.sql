@@ -14,7 +14,8 @@ CREATE TABLE review(
   users_id INT REFERENCES users(id),
   types_id INT REFERENCES types(id),
   likes_id INT REFERENCES likes(id),
-  clerk_id TEXT
+  clerk_id TEXT,
+  movie_id INT
   );
 
   CREATE TABLE comment(
