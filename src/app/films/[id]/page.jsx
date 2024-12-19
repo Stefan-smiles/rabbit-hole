@@ -1,8 +1,10 @@
 import ReviewForm from "@/components/ReviewForm";
 import Image from "next/image";
 import { db } from "@/utils/db";
-
+import { currentUser, auth } from "@clerk/nextjs/server";
 export default async function MovieDetails({ params }) {
+  const { userId } = await auth();
+  const user = await currentUser();
   const { id } = await params; // Dynamic route params
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b`
@@ -33,8 +35,9 @@ export default async function MovieDetails({ params }) {
             Release Date: {movie.release_date}
           </p>
           <ReviewForm movieid={id} />
-          <h3>{content[0].title}</h3>
-          <p>{content[0].content}</p>
+          <p>username:{user.username}</p>
+          <h3>Film title:{content[0].title}</h3>
+          <p>Film review:{content[0].content}</p>
         </div>
       </div>
     </main>
