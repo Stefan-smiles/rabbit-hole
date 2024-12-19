@@ -56,6 +56,12 @@ console.log("This is my user log:", user)
             <p className="text-gray-300 mb-4">Your Bio:</p>
             <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
               <p className="text-white">{bio}</p>
+              <Link
+          href="/profile/edit"
+          className="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 transition duration-300"
+        >
+          Edit Bio
+        </Link>
               {/*<EditBio/>*/}
             </div>
           </div>
