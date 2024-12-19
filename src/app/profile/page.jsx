@@ -3,9 +3,9 @@ import UserForm from "@/components/UserForm";
 import { currentUser, auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Image from "next/image";
-//import { EditBio } from "@/components/EditBio";
+import { EditBio } from "@/components/EditBio";
 
-export default async function ProfileForm() {
+export default async function ProfileForm( {params} ) {
   const { userId } = await auth();
   const user = await currentUser();
 console.log("This is my user log:", user)
@@ -56,13 +56,14 @@ console.log("This is my user log:", user)
             <p className="text-gray-300 mb-4">Your Bio:</p>
             <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
               <p className="text-white">{bio}</p>
-              <Link
+
+          <Link
           href="/profile/edit"
           className="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 transition duration-300"
         >
           Edit Bio
         </Link>
-              {/*<EditBio/>*/}
+
             </div>
           </div>
         ) : (
