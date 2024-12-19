@@ -1,5 +1,6 @@
 import ReviewForm from "@/components/ReviewForm";
 import Image from "next/image";
+import { db } from "@/utils/db";
 
 export default async function MovieDetails({ params }) {
   const { id } = await params; // Dynamic route params
@@ -7,6 +8,10 @@ export default async function MovieDetails({ params }) {
     `https://api.themoviedb.org/3/movie/${id}?api_key=d7186b2a1c0ff8a8bc39d8b6ff75b39b`
   );
   const movie = await response.json();
+
+  const review = await db.query(`SELECT * FROM review WHERE movie_id =${id}`);
+  const content = await review.rows;
+  console.log(content);
 
   return (
     <main className="bg-gradient-to-b from-gray-900 to-gray-800 text-white min-h-screen p-8">
@@ -28,6 +33,8 @@ export default async function MovieDetails({ params }) {
             Release Date: {movie.release_date}
           </p>
           <ReviewForm movieid={id} />
+          <h3>{content[0].title}</h3>
+          <p>{content[0].content}</p>
         </div>
       </div>
     </main>
